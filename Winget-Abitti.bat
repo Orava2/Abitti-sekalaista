@@ -1,13 +1,10 @@
 @echo off
 
 REM Esimerkki kuinka Windowsin winget-komennolla voi asentaa Abitti-ohjelmia.
-REM Jos Winget ei ole sannettuna, lataa se Storesta https://apps.microsoft.com/store/detail/sovellusten-asennusohjelma/9NBLGGH4NNS1
-
+REM Testataan automaattisesti onko Winget asennettu ja riittävän uusi versio. Wingetin voi asentaa myös Storesta https://apps.microsoft.com/store/detail/sovellusten-asennusohjelma/9NBLGGH4NNS1
 
 REM Kysytään käyttäjältä admin-oikeudet.
 if not "%1"=="am_admin" (powershell start -verb runas '%0' 'am_admin "!UNCPATH!"' & exit /b)
-
-
 
 REM Testataan verkkoyhteys
 echo.
@@ -23,7 +20,6 @@ ping 8.8.8.8 >nul || (
 if not "%noServer%"=="true" (
 	echo *** YHTEYS TOIMII ***
 )
-
 
 REM Testataan onko Winget asennettu
 REM Asenna uusin Microsoft.DesktopAppInstaller
@@ -54,8 +50,6 @@ REM echo - wxMaxima
 echo.
 
 pause
-
-
 
 echo.
 echo ASENNETAAN MARVIN SKETCH OpenJDK
