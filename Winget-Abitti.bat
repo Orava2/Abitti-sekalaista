@@ -24,6 +24,7 @@ if not "%noServer%"=="true" (
 REM Testataan onko Winget asennettu
 REM Asenna uusin Microsoft.DesktopAppInstaller
 REM https://learn.microsoft.com/en-us/windows/msix/app-installer/install-update-app-installer
+REM https://learn.microsoft.com/en-us/windows/package-manager/winget/#install-winget-on-windows-sandbox
 REM Add-AppxPackage -Path https://aka.ms/getwinget
 REM Tämä vaatii riittävän uuden version Microsoft.UI.Xaml.2.8:sta.
 
@@ -32,7 +33,7 @@ REM if ([System.Version](Get-AppxPackage Microsoft.DesktopAppInstaller).Version 
 echo.
 echo TESTATAAN ONKO WINGET ASENNETTU JA TARPEEKSI UUSI VERSIO
 powershell -Command "& {	[System.Version](Get-AppxPackage Microsoft.DesktopAppInstaller).Version }"
-powershell -Command "& {	IF ([System.Version](Get-AppxPackage Microsoft.DesktopAppInstaller).Version -lt [System.Version]'1.22.1000' ) {write-host "*** WINGET ON PAIVITETTAVA ***"; write-host "Asennetaan Winget..."; Add-AppxPackage -Path "https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.8.6/Microsoft.UI.Xaml.2.8.x64.appx" ;Add-AppxPackage -Path "https://aka.ms/getwinget" } ELSE { write-host "*** WINGET ON ASENNETTU JA RIITTAVAN UUSI ***"   }         }"
+powershell -Command "& {	IF ([System.Version](Get-AppxPackage Microsoft.DesktopAppInstaller).Version -lt [System.Version]'1.22.1000' ) {write-host "*** WINGET ON PAIVITETTAVA ***"; write-host "Asennetaan Winget..."; Add-AppxPackage -Path "https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx" ;Add-AppxPackage -Path "https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.8.6/Microsoft.UI.Xaml.2.8.x64.appx" ;Add-AppxPackage -Path "https://aka.ms/getwinget" } ELSE { write-host "*** WINGET ON ASENNETTU JA RIITTAVAN UUSI ***"   }         }"
 where winget
 
 REM Ohjelmien asennukset
